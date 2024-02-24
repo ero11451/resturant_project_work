@@ -7,4 +7,5 @@ if (!$connection) {
 
 session_start();
 
+
 ?>

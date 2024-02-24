@@ -1,24 +1,39 @@
-<?php 
+<?php
 
-    // include './DBconnect.php';
+// include './DBconnect.php';
 
-    include('DBconnect.php');
+include('DBconnect.php');
+header('Content-Type:application/json');
+$response = [];
 
-    $sql = "SELECT * FROM recipeTesting JOIN users ON users.id = recipeTesting.chef_id";
+if ($_SERVER["REQUEST_METHOD"] == 'GET') {
+   $sql = "SELECT * FROM recipeTesting JOIN users ON users.id = recipeTesting.chef_id ";
+   $result = $connection->query($sql);
 
-    $result = $connection->query($sql);
-    $data = [];
+   if  ($result->num_rows > 0){
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-         $data[] = $row;
+      $response['status'] = 200;
+      $response['message'] = 'successful';
+      while($row = $result->fetch_assoc()) { 
+          $response['data'][] = $row; 
       }
-    } else {
-       header('Content-Type:application/json');
-       echo json_encode("there was an error");
-    }
+   }else{
+      $response['status'] = 200;
+      $response['message'] = 'There was no data found';
+      $response['data'] = null;
+}
+   # code...
+}
 
-    header('Content-Type:application/json');
-    echo json_encode($data); 
 
-?>
+// if ($result->num_rows > 0) {
+//    while ($row = $result->fetch_assoc()) {
+//       $data[] = $row;
+//    }
+// } else {
+//    echo json_encode("there was an error");
+// }
+// header('Content-Type:application/json');
+
+
+echo json_encode($response);

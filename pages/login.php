@@ -78,9 +78,6 @@
                 </div>
 
                 <div class="mt-5">
-
-
-                    <!-- Form -->
                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <div class="grid gap-y-4">
                             <!-- Form Group -->

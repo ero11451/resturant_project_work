@@ -39,9 +39,9 @@
     <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
       <a class="font-medium text-blue-600 md:py-6 " href="home.php" aria-current="page">Home</a>
     
-      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="createRecipe.php">Add recipe</a>
-      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="#">Contact us</a>
-      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="#">About us</a>
+      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="dashboard">Dashboard</a>
+      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="c">menu</a>
+      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="about">About us</a>
   <?php
   if (isset($_SESSION['username'])) {
     echo '  <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 "
