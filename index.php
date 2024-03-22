@@ -12,8 +12,8 @@
 <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:p-10">
   <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
     <div>
-      <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight ">Start your journey with <span class="text-blue-600">Preline</span></h1>
-      <p class="mt-3 text-lg text-gray-800 ">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+      <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight ">Start your journey with <span class="text-blue-600">Muyi Foods</span></h1>
+      <p class="mt-3 text-lg text-gray-800 ">become the next top chef  .</p>
 
       <div class="mt-7 grid gap-3 w-full sm:inline-flex">
         <a 

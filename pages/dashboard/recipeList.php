@@ -244,7 +244,8 @@ if (isset($recipe_id)) {
                   </td>
                   <td class="size-px whitespace-nowrap">
                     <div class="px-6 py-1.5 flex gap-2">
-                      <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium " href="/pages/dashboard/createRecipe.php">
+                      <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium "
+                       href="/pages/dashboard/createRecipe.php?id=${data['id']}">
                         Edit
                       </a>
                       <button onclick="deleteRecipe(${data["id"]})" class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium ">

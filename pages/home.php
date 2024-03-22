@@ -2,7 +2,7 @@
    include('../api/DBconnect.php');
     if (!isset($_SESSION['username']) && !isset($_SESSION['user_type']) && !isset($_SESSION['email'])) {
       header('Location: login.php');
-      echo 'you are not going';
+      echo 'you are not loged in';
     } 
 ?>
 
@@ -34,11 +34,11 @@
         <!-- Title -->
         <div class="space-y-2 md:space-y-4">
           <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-            We tackle the challenges start-ups face
+          Learning how to cook and share recipes
           </h2>
           <p class="text-gray-500">
-            Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
-          </p>
+          Learning how to cook and as a chef you can share recipes
+        </p>
         </div>
         <ul role="list" class="space-y-2 sm:space-y-4">
           <li class="flex space-x-3">
@@ -47,7 +47,7 @@
             </span>
 
             <span class="text-sm sm:text-base text-gray-500">
-              <span class="font-bold">Easy & fast</span> designing
+              <span class="font-bold">Easy & fast</span> Learning how to cook
             </span>
           </li>
 
@@ -57,7 +57,7 @@
             </span>
 
             <span class="text-sm sm:text-base text-gray-500">
-              Powerful <span class="font-bold">features</span>
+              User dashboard <span class="font-bold">features</span>
             </span>
           </li>
 
@@ -134,6 +134,42 @@
   </div>
   <!-- End Grid -->
 </footer>
+
+<my-title></my-title>
+
+<script>
+  
+  function Header () {
+    return {  
+      selector: 'app-send-me-cash',
+      template: `<div class='bg-red-20'> </div>`,
+      style: ['active']}
+  }
+
+  regusterComponent(Header)
+
+(function() {
+  class MyTitle extends HTMLElement {
+    connectedCallback() {
+      this.innerHTML = `
+        <style>
+          h1 {
+            font-size: 2.5rem;
+            color: hotpink;
+            font-family: monospace;
+            text-align: center;
+            text-decoration: pink solid underline;
+            text-decoration-skip: ink;
+          }
+        </style>
+        <h1>Hello Alligator!</h1>
+      `;
+    }
+  }
+
+  window.customElements.define('my-title', MyTitle);
+})();
+</script>
     <script src="../../assets/vendor/preline/dist/index.js?v=1.0.0"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B73TDMXKF5"></script>
 

@@ -40,7 +40,7 @@
       <a class="font-medium text-blue-600 md:py-6 " href="home.php" aria-current="page">Home</a>
     
       <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="dashboard">Dashboard</a>
-      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="c">menu</a>
+      <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="/pages/menu.php">menu</a>
       <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="about">About us</a>
   <?php
   if (isset($_SESSION['username'])) {

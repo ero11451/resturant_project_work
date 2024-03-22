@@ -7,6 +7,7 @@ header('Content-Type:application/json');
 $response = [];
 
 if ($_SERVER["REQUEST_METHOD"] == 'GET') {
+   
    $sql = "SELECT * FROM recipeTesting JOIN users ON users.id = recipeTesting.chef_id ";
    $result = $connection->query($sql);
 
