@@ -42,9 +42,10 @@
       <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="dashboard">Dashboard</a>
       <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="/pages/menu.php">menu</a>
       <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 " href="about">About us</a>
-  <?php
-  if (isset($_SESSION['username'])) {
-    echo '  <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 "
+
+  <?php  if (isset($_SESSION['user']))  :?>
+
+    <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 "
      href="logout.php">
     <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -52,20 +53,16 @@
       <circle cx="12" cy="7" r="4"></circle>
     </svg>
     Log out
-  </a>';
-    # code...
-  } else {
-    # code...
-  }
+  </a>
   
-      echo ` <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 " href="#">
+     <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 " href="#">
         <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
         Log in
-      </a>`
-      ?>
+      </a>
+     <?php endif ?>
     </div>
   </div>
 </nav>

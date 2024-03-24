@@ -2,7 +2,7 @@
 
    include('../api/DBconnect.php');
 
-  $emailErr =  $passwordErr  = "";
+  $error   = "";
   $email =  $password = "";
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,7 +14,7 @@
       }
         
       if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
+        $error['email'] = "Email is required";
       } else {
         $email = test_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -32,10 +32,7 @@
           $checkPassword = (bool) password_verify( $password, $dbPassword);
 
           if ($checkPassword) {
-            $_SESSION["user_id"]  = $row["id"];
-            $_SESSION["user_type"]  = $row["user_type"];
-            $_SESSION["username"]  =  $row["username"];
-            $_SESSION["email"]  =$row["email"];
+            $_SESSION["user"]  = $row;
             header('Location: home.php');
           }else{
             echo "Invalid credentials";
@@ -68,7 +65,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 flex h-full items-center py-16">
+<body class="bg-gray-100 flex h-full items-center py-16 bg-cover bg-center bg-no-repeat h-screen bg-opacity-100 " style="background-image: url('https://img.freepik.com/premium-photo/caprese-salad-italian-steak_777271-6312.jpg?size=626&ext=jpg');">
     <main class="w-full max-w-md mx-auto p-6">
         <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm ">
             <div class="p-4 sm:p-7">
@@ -95,8 +92,9 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid
-                                    email address so we can get back to you</p>
+                                <p class=" text-xs text-red-600 mt-2" id="email-error">
+                                  <?php echo $error['email'] ?>
+                                </p>
                             </div>
                             <div>
                                 <div class="flex justify-between items-center">
@@ -115,7 +113,7 @@
                                     </div>
                                 </div>
                                 <p class="hidden text-xs text-red-600 mt-2" id="password-error">
-                                    <span class="error">* <?php echo $passwordErr;?></span>
+                                    <span class="error">* <?php echo $error['password'];?></span>
                                 </p>
                             </div>
 

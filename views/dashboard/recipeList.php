@@ -1,14 +1,10 @@
 <?php
 
-// include('../api/DBconnect.php');
+include('../api/db/connection.php');
 
-$user_id = $_SESSION["user_id"];
+$user_id = $_SESSION["user"]['user_id'];
 
 
-$checkUserSql = "SELECT * FROM recipeTesting WHERE chef_id = '$user_id'";
-
-$result = $connection->query($checkUserSql);
-$recipe_id = isset($_GET['recipe_id']) ? $_GET['recipe_id'] : null;
 
 if (isset($recipe_id)) {
   $recipe_id = $_GET['recipe_id'];
@@ -34,7 +30,7 @@ if (isset($recipe_id)) {
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body onload="functionToCall() ">
+<body >
 
 
   <!-- Table Section -->
@@ -132,7 +128,65 @@ if (isset($recipe_id)) {
               </thead>
 
               <tbody id='table-container' class="divide-y divide-gray-200 ">
+              <td class="size-px whitespace-nowrap">
 
+</td>
+<td class="size-px whitespace-nowrap">
+  <div class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3">
+    <div class="flex items-center gap-x-3">
+           <img class="inline-block size-[38px] rounded-lg" 
+     src="${data["img_url"] !== '' ? data["img_url"] : './../assests/images/defaultImages.jpg' }"
+       alt="Image Description">
+      <div class="grow">
+        <span class="block text-sm font-semibold text-gray-800">    ${data["title"]}</span>
+        <span class="block text-sm text-gray-500">  ${data[  "disciption"]}</span>
+      </div>
+    </div>
+  </div>
+</td>
+<td class="h-px w-72 whitespace-nowrap">
+  <div class="px-6 py-3">
+    <span class="block text-sm font-semibold text-gray-800 ">  ${data[ "chef_name"]}</span>
+    <span class="block text-sm text-gray-500">Chef</span>
+  </div>
+</td>
+<td class="size-px whitespace-nowrap">
+  <div class="px-6 py-3">
+    <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full ">
+      <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+      </svg>
+      Active
+    </span>
+  </div>
+</td>
+<td class="size-px whitespace-nowrap">
+  <div class="px-6 py-3">
+    <div class="flex items-center gap-x-3">
+      <span class="text-xs text-gray-500">1/5</span>
+      <div class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+        <div class="flex flex-col justify-center overflow-hidden bg-gray-800 " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </div>
+</td>
+<td class="size-px whitespace-nowrap">
+  <div class="px-6 py-3">
+    <span class="text-sm text-gray-500"> ${data["create_date"]}</span>
+  </div>
+</td>
+<td class="size-px whitespace-nowrap">
+  <div class="px-6 py-1.5 flex gap-2">
+    <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium "
+     href="/pages/dashboard/createRecipe.php?id=${data['id']}">
+      Edit
+    </a>
+    <button onclick="deleteRecipe(${data["id"]})" class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium ">
+      Delete
+    </button>
+  </div>
+  
+</td>
 
               </tbody>
             </table>
@@ -173,124 +227,6 @@ if (isset($recipe_id)) {
   </div>
   <!-- End Table Section -->
 
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    let tableContainerElement = document.getElementById('table-container')
-
-    function functionToCall() {
-      fetch('/api/controller/menu/getUserMenu.php')
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('API request failed');
-          }
-        })
-        // ${data["img_url"] !== '' ? data["img_url"] : './../assests/images/defaultImages.jpg' }
-        .then(res => {
-          console.log(res.data)
-          res.data.forEach((data) => {
-            let card = document.createElement('tr')
-            card.innerHTML = `
-          
-                  <td class="size-px whitespace-nowrap">
-
-                  </td>
-                  <td class="size-px whitespace-nowrap">
-                    <div class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3">
-                      <div class="flex items-center gap-x-3">
-                             <img class="inline-block size-[38px] rounded-lg" 
-                       src="${data["img_url"] !== '' ? data["img_url"] : './../assests/images/defaultImages.jpg' }"
-                         alt="Image Description">
-                        <div class="grow">
-                          <span class="block text-sm font-semibold text-gray-800">    ${data["title"]}</span>
-                          <span class="block text-sm text-gray-500">  ${data[  "disciption"]}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="h-px w-72 whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="block text-sm font-semibold text-gray-800 ">  ${data[ "chef_name"]}</span>
-                      <span class="block text-sm text-gray-500">Chef</span>
-                    </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full ">
-                        <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                        </svg>
-                        Active
-                      </span>
-                    </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <div class="flex items-center gap-x-3">
-                        <span class="text-xs text-gray-500">1/5</span>
-                        <div class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                          <div class="flex flex-col justify-center overflow-hidden bg-gray-800 " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500"> ${data["create_date"]}</span>
-                    </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
-                    <div class="px-6 py-1.5 flex gap-2">
-                      <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium "
-                       href="/pages/dashboard/createRecipe.php?id=${data['id']}">
-                        Edit
-                      </a>
-                      <button onclick="deleteRecipe(${data["id"]})" class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium ">
-                        Delete
-                      </button>
-                    </div>
-                    
-                  </td>
-             `
-            tableContainerElement.appendChild(card)
-          })
-          console.log(data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-
-    function deleteRecipe(id) {
-      tableContainerElement.innerHTML = []
-
-      fetch('/api/controller/menu/delete.php', {
-          method: "POST",
-          body: JSON.stringify({
-            recipe_id: id,
-          }),
-        })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('API request failed');
-          }
-        })
-        .then(res => {
-          functionToCall()
-        })
-    }
-
-   function refresh(){
-      tableContainerElement.innerHTML = []
-      functionToCall()
-
-    }
-  </script>
 
 
 </body>

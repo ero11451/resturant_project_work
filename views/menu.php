@@ -2,7 +2,7 @@
    include('../api/DBconnect.php');
     if (!isset($_SESSION['username']) && !isset($_SESSION['user_type']) && !isset($_SESSION['email'])) {
       header('Location: login.php');
-      echo 'you are not loged in';
+      echo 'you are not going';
     } 
 ?>
 
@@ -21,60 +21,7 @@
     <?php include "../component/header.php"?>
 
     <!-- Features -->
-<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Grid -->
-  <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-    <div>
-      <img class="rounded-xl" src="https://images.unsplash.com/photo-1648737963503-1a26da876aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=900&q=80" alt="Image Description">
-    </div>
-    <!-- End Col -->
 
-    <div class="mt-5 sm:mt-10 lg:mt-0">
-      <div class="space-y-6 sm:space-y-8">
-        <!-- Title -->
-        <div class="space-y-2 md:space-y-4">
-          <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-          Learning how to cook and share recipes
-          </h2>
-          <p class="text-gray-500">
-          Learning how to cook and as a chef you can share recipes
-        </p>
-        </div>
-        <ul role="list" class="space-y-2 sm:space-y-4">
-          <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-
-            <span class="text-sm sm:text-base text-gray-500">
-              <span class="font-bold">Easy & fast</span> Learning how to cook
-            </span>
-          </li>
-
-          <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-
-            <span class="text-sm sm:text-base text-gray-500">
-              User dashboard <span class="font-bold">features</span>
-            </span>
-          </li>
-
-          <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-
-            <span class="text-sm sm:text-base text-gray-500">
-              User Experience Design
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="grid lg:grid-cols-2 gap-6" id='cardContainer'>
         </div>
@@ -134,114 +81,10 @@
   </div>
   <!-- End Grid -->
 </footer>
-
-<my-title></my-title>
-
-<script>
-  
-  function Header () {
-    return {  
-      selector: 'app-send-me-cash',
-      template: `<div class='bg-red-20'> </div>`,
-      style: ['active']}
-  }
-
-  regusterComponent(Header)
-
-(function() {
-  class MyTitle extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = `
-        <style>
-          h1 {
-            font-size: 2.5rem;
-            color: hotpink;
-            font-family: monospace;
-            text-align: center;
-            text-decoration: pink solid underline;
-            text-decoration-skip: ink;
-          }
-        </style>
-        <h1>Hello Alligator!</h1>
-      `;
-    }
-  }
-
-  window.customElements.define('my-title', MyTitle);
-})();
-</script>
     <script src="../../assets/vendor/preline/dist/index.js?v=1.0.0"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B73TDMXKF5"></script>
 
-    <script>
-    window.dataLayer = window.dataLayer || [];
-
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    let cardContainerElement = document.getElementById('cardContainer')
-
-    function functionToCall() {
-        fetch('../api/controller/menu/get.php')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('API request failed');
-                }
-            })
-            .then(res => {
-                res.data.forEach((data) => {
-                    let card = document.createElement('div')
-                    card.innerHTML = `
-                    <a class="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="detailPage">
-                <div
-                    class="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
-                    <img 
-                    src="${data["img_url"] !== '' ? data["img_url"] : './../assests/images/defaultImages.jpg' }"
-                    class="w-full h-full absolute top-0 start-0 object-cover" />
-                </div>
-
-                <div class="absolute top-0 inset-x-0 z-10">
-                    <div class="p-4 flex flex-col h-full sm:p-6">
-                        <div class="flex items-center">
-                         
-                            <div class="ms-2.5 sm:ms-4">
-                                <h4 class="font-semibold text-white">
-                                   ${data[ "chef_name"]}
-                                </h4>
-                                <p class="text-xs text-white/[.8]">
-                                   ${data["create_date"]}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="absolute bottom-0 inset-x-0 z-10">
-                    <div class="flex flex-col h-full p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/[.8]">
-                           ${data["title"]}
-                        </h3>
-                        <p class="mt-2 text-white/[.8]">
-                            ${data[  "disciption"]}
-                        </p>
-                    </div>
-                </div>
-            </a> 
-                    `
-                    cardContainerElement.appendChild(card)
-                })
-                console.log(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    </script>
+  
 
 </body>
 </body>

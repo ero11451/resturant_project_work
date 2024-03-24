@@ -5,4 +5,8 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
+
+  function basePath($path){
+    return __DIR__ . '/' . $path;
+  }
 ?>
