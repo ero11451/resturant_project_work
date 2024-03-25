@@ -1,39 +1,10 @@
-<?php 
-   include('../api/DBconnect.php');
-    if (!isset($_SESSION['username']) && !isset($_SESSION['user_type']) && !isset($_SESSION['email'])) {
-      header('Location: login.php');
-      echo 'you are not going';
-    } 
-?>
+<footer class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body >
-    <?php include "../component/header.php"?>
-
-    <!-- Features -->
-
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div class="grid lg:grid-cols-2 gap-6" id='cardContainer'>
-        </div>
-    </div>
-
-    <footer class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-  <!-- Grid -->
   <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-5 text-center">
     <div>
-      <a class="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#" aria-label="Brand">Brand</a>
+      <a class="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+       href="#" aria-label="Brand">Brand</a>
     </div>
-    <!-- End Col -->
 
     <ul class="text-center">
       <li class="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-gray-600">
@@ -52,9 +23,7 @@
         </a>
       </li>
     </ul>
-    <!-- End Col -->
-
-    <!-- Social Brands -->
+ 
     <div class="md:text-end space-x-2">
       <a class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
         <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -77,16 +46,5 @@
         </svg>
       </a>
     </div>
-    <!-- End Social Brands -->
   </div>
-  <!-- End Grid -->
 </footer>
-    <script src="../../assets/vendor/preline/dist/index.js?v=1.0.0"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B73TDMXKF5"></script>
-
-  
-
-</body>
-</body>
-
-</html>

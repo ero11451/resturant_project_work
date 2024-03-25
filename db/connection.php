@@ -8,6 +8,7 @@ $password = "";
 $DBconn;
 
 try {
+  
   $DBconn = new PDO("mysql:host=$servername", $username, $password);
   $DBconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $createSql = "CREATE DATABASE  IF NOT EXISTS  learing_db";

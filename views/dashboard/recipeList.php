@@ -4,8 +4,6 @@ include('../api/db/connection.php');
 
 $user_id = $_SESSION["user"]['user_id'];
 
-
-
 if (isset($recipe_id)) {
   $recipe_id = $_GET['recipe_id'];
   $deleteSql = "DELETE FROM recipeTesting WHERE id =  $recipe_id";

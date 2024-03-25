@@ -54,10 +54,10 @@ $categorySql = 'CREATE TABLE IF NOT EXISTS categories (
       echo "Error creating table: users " . $DBconn->error;
     }
 
-    if ($DBconn->query($sqlRecipe) === TRUE) {
+    if ($DBconn->query($lessonsSql) === TRUE) {
         echo '<pre>'. "Table lessons created successfully". '/<pre>';
       } else {
-        echo "Error creating table: Recipe " . $DBconn->error;
+        echo "Error creating table: lessons " . $DBconn->error;
       }
     $DBconn->close();
 

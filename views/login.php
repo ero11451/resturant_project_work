@@ -1,7 +1,5 @@
 <?php 
 
-   include('../api/DBconnect.php');
-
   $error   = "";
   $email =  $password = "";
 
@@ -23,121 +21,59 @@
       }
    
 
-      $checkUserSql = "SELECT * FROM users WHERE email = '$email'";
-      $result =   $connection->query($checkUserSql);
-
-      if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          $dbPassword = $row["user_password"];
-          $checkPassword = (bool) password_verify( $password, $dbPassword);
-
-          if ($checkPassword) {
-            $_SESSION["user"]  = $row;
-            header('Location: home.php');
-          }else{
-            echo "Invalid credentials";
-          }
-        }
-      } else {
-        echo "Invalid credentials";
       }
 
-      }
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100 flex h-full items-center py-16 bg-cover bg-center bg-no-repeat h-screen bg-opacity-100 " style="background-image: url('https://img.freepik.com/premium-photo/caprese-salad-italian-steak_777271-6312.jpg?size=626&ext=jpg');">
-    <main class="w-full max-w-md mx-auto p-6">
-        <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm ">
-            <div class="p-4 sm:p-7">
-                <div class="text-center">
-                    <h1 class="block text-2xl font-bold text-gray-800 ">Sign in</h1>
-
-                </div>
-
-                <div class="mt-5">
-                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        <div class="grid gap-y-4">
-                            <!-- Form Group -->
-                            <div>
-                                <label for="email" class="block text-sm mb-2 ">Email address</label>
-                                <div class="relative">
-                                    <input type="email" id="email" name="email"
-                                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        required aria-describedby="email-error">
-                                    <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                                        <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor"
-                                            viewBox="0 0 16 16" aria-hidden="true">
-                                            <path
-                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class=" text-xs text-red-600 mt-2" id="email-error">
-                                  <?php echo $error['email'] ?>
-                                </p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between items-center">
-                                    <label for="password" class="block text-sm mb-2 ">Password</label>
-                                </div>
-                                <div class="relative">
-                                    <input type="password" id="password" name="password"
-                                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        required aria-describedby="password-error">
-                                    <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                                        <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor"
-                                            viewBox="0 0 16 16" aria-hidden="true">
-                                            <path
-                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="hidden text-xs text-red-600 mt-2" id="password-error">
-                                    <span class="error">* <?php echo $error['password'];?></span>
-                                </p>
-                            </div>
 
 
-                            <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm
-                 font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700
-                  disabled:opacity-50 disabled:pointer-events-none">Submit</button>
+<div class="relative overflow-hidden">
+  <div class="mx-auto max-w-screen-md  h-screen  py-12 px-4 sm:px-6 md:max-w-screen-xl md:py-20 lg:py-32 md:px-8">
+    <div class="md:pe-8 md:w-1/2 xl:pe-0 xl:w-5/12">
 
-                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400  text-center">
-                                Don't have an account yet?
-                                <a class="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                    href="./signup.php">
-                                    Sign up here
-                                </a>
-                            </p>
-                        </div>
-                    </form>
-                    <!-- End Form -->
-                </div>
-            </div>
+      <h1 class="text-3xl text-gray-800 font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
+        Welcome back  <br> <span class="text-blue-600 dark:text-red-500">The plug</span>
+      </h1>
+      <p class="mt-3 text-base text-gray-500 mb-8">
+        Built on standard web technology, teams use Preline to build beautiful cross-platform hybrid apps in a fraction of the time.
+      </p>
+
+
+ 
+
+
+      <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="mb-4">
+          <label for="hs-hero-name-2" class="block text-sm font-medium dark:text-white"><span class="sr-only">Full name</span></label>
+          <input type="text" id="hs-hero-name-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none 
+          border" placeholder="Full name">
         </div>
-    </main>
-</body>
 
-<script src="./node_modules/preline/dist/preline.js"></script>
+        <div class="mb-4">
+          <label for="hs-hero-email-2" class="block text-sm font-medium dark:text-white"><span class="sr-only">Email address</span></label>
+          <input type="email" id="hs-hero-email-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none 
+          border" placeholder="Email address">
+        </div>
 
-</html>
+        <div class="mb-4">
+          <label for="hs-hero-password-2" class="block text-sm font-medium dark:text-white"><span class="sr-only">Password</span></label>
+          <input type="email" id="hs-hero-password-2" class="py-3 px-4 border block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Password">
+        </div>
+
+        <div class="grid">
+          <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-red-600">Sign up</button>
+        </div>
+      </form>
+      <!-- End Form -->
+    </div>
+  </div>
+
+
+
+  <div
+  style="background-image: url('https://img.freepik.com/free-photo/woman-chef-cooking-vegetables-pan_1303-22282.jpg?w=1800&t=st=1711334080~exp=1711334680~hmac=2f236c51c111526d6f709d7dc3cc2afc900e2f4ef9a20b798b4ac62da2421609');"
+  class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full 
+      bg-[url('https://img.freepik.com/free-photo/woman-chef-cooking-vegetables-pan_1303-22282.jpg?w=1800&t=st=1711334080~exp=1711334680~hmac=2f236c51c111526d6f709d7dc3cc2afc900e2f4ef9a20b798b4ac62da2421609')] bg-no-repeat bg-center bg-cover"></div>
+
+</div>
