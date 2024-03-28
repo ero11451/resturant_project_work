@@ -1,9 +1,9 @@
-<html class="h-full">
-  <body class="flex h-full">
+<div class="h-full">
+  <div class="flex h-full">
     <div class="max-w-[50rem] flex flex-col mx-auto size-full">
       <header class="mb-auto flex justify-center z-50 w-full py-4">
         <nav class="px-4 sm:px-6 lg:px-8" aria-label="Global">
-          <a class="flex-none text-xl font-semibold sm:text-3xl" href="#" aria-label="Brand">Brand</a>
+          <!-- <a class="flex-none text-xl font-semibold sm:text-3xl" href="#" aria-label="Brand">Brand</a> -->
         </nav>
       </header>
 
@@ -16,7 +16,7 @@
         
           <a class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 
           text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800
-           disabled:opacity-50 disabled:pointer-events-none " href="/home">
+           disabled:opacity-50 disabled:pointer-events-none " href="/">
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             Back to examples
           </a>
@@ -29,5 +29,5 @@
         </div>
       </footer>
     </div>
-  </body>
-</html>
+</div>
+</div>

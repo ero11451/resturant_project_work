@@ -1,17 +1,21 @@
 <?php
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
 
-  function basePath($path){
-    return  dirname(__DIR__) . '/' . $path;
-  }
+function test_input($data)
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 
-  function loadView($name, $data = []){
-    echo '
+function basePath($path)
+{
+  return  dirname(__DIR__) . '/' . $path;
+}
+
+function loadView($name, $data = [])
+{
+  echo '
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -23,31 +27,37 @@ function test_input($data) {
     </head>
     <body >
 ';
-    $viewPath =  basePath("views/{$name}.php");
+  $viewPath =  basePath("views/{$name}.php");
 
-    if (file_exists($viewPath)) {
-      extract($data);
-      require $viewPath;
-    } else {
-      require basePath("views/error.php");
-    }
+  if (file_exists($viewPath)) {
+    extract($data);
+    require  $viewPath;
+  } else {
+    require basePath("views/error.php");
+  }
 
-    echo '
+  echo '
     </body>
     </html>';
+}
+
+function loadComponent($name, $data = [])
+{
+
+  $viewPath =  basePath("views/component/{$name}.php");
+
+  if (file_exists($viewPath)) {
+    extract($data);
+    require $viewPath;
+  } else {
+    echo 'Component' . $name . ' does not exist';
   }
+}
 
-  function loadComponent($name, $data = []){
+function print_data($data)
+{
+  echo '<pre>';
+  var_dump($data);
+  echo '</pre>';
+}
 
-    $viewPath =  basePath("views/component/{$name}.php");
-
-    if (file_exists($viewPath)) {
-      extract($data);
-      require $viewPath;
-    } else {
-      echo 'Component' . $name .' does not exist';
-    }
-  }
-
-
-?>

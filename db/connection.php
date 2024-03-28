@@ -1,24 +1,44 @@
 <?php
 
-session_start();
 
 $servername = "localhost";
 $username = "root";
 $password = "";
-$DBconn;
+$conn;
 
 try {
-  
-  $DBconn = new PDO("mysql:host=$servername", $username, $password);
-  $DBconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $createSql = "CREATE DATABASE  IF NOT EXISTS  learing_db";
-  $DBconn->exec($createSql);
+  $conn = new PDO("mysql:host=$servername", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "CREATE DATABASE  IF NOT EXISTS  lessons";
+  $conn->exec($sql);
 
-  $DBconn->exec("USE learing_db");
+  $conn->exec("USE lessons");
 
+
+  // echo "Database created successfully<br>";
 } catch(PDOException $e) {
-  echo '<pre>' . $createSql . "<br>" . $e->getMessage() . '</pre>';
+  echo $sql . "<br>" . $e->getMessage();
 }
 
-?>
+
+
+
+ 
+
+
+ function query($sql , $params , $conn){
+  try{
+    $stmt =  $conn->prepare($sql);
+  
+     $stmt->execute($params);
+    
+    return $stmt ->fetchAll(PDO::FETCH_ASSOC);
+
+  }catch(PDOException $e) {
+    echo '<pre>' . "<br>" . $e->getMessage() . '</pre>';
+  }
+}
+
+
+  
 

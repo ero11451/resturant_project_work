@@ -1,0 +1,7 @@
+{
+    "require": {
+        "respect/validation": "^2.3",
+        "bramus/router": "^1.6",
+        "laracasts/flash": "^3.2"
+    }
+}

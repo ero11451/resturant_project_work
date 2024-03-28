@@ -1,14 +1,15 @@
 <?php
 
 
+require(basePath('db/connection.php'));
 
- require_once '../db/connection.php';
+
  
 function getLessons(  ){
 
 try {
     $sql = 'SELECT  * FROM lessons  ';
-    $stmt = $DBconn->prepare($sql);
+    $stmt = $DB->prepare($sql);
     $stmt->execute();
     $resultDB = $stmt->fetchAll();
 
