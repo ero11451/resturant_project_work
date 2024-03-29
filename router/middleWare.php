@@ -1,16 +1,19 @@
 <?php 
 
+function isUserLogin() {
+    if (!isset($_SESSION['user'])) {
+        http_response_code(401);
 
- function isLogedin() {
+        loadView('component/notification', [
+            'message' => 'User does not have access to this resource.', 
+            'type' => 'error'
+        ]);
 
-
-        return true;
-}
-
-function authenticate() {
-
-        return true;
+        header('location: /login');
+        echo '401 - Unauthorized';
+        exit();
     }
+}
 
 
 ?>

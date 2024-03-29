@@ -22,7 +22,7 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       <li>
         <a class="
           flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg 
-           hover:bg-gray-100  <?php echo $url == '/home' ? ' bg-white text-red-800' : 'text-white' ?> " href="/home">
+           hover:bg-gray-100  hover:text-red-800  <?php echo $url == '/home' ? ' bg-white text-red-800' : 'text-white' ?> " href="/home">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
@@ -32,9 +32,10 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       </li>
 
 
-
+<?php if ($_SESSION['user']['user_type'] == 'chef' ) : ?>
       <li>
         <a href="/lessons/create" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-gray-100 
+        hover:text-red-800 
             <?php echo $url == '/lessons/create' ? ' bg-white text-red-800' : 'text-white' ?> 
             " href="#">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -52,8 +53,10 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           Create Lessons
         </a>
       </li>
+<?php endif ?>
       <li>
-        <a href="lessons" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-gray-100 
+        <a href="/lessons" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-gray-100 
+        hover:text-red-800 
             <?php echo $url == '/lessons' ? ' bg-white text-red-800' : 'text-white' ?> 
             ">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,7 +68,8 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       </li>
 
       <li>
-        <a href="logout" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-gray-100 
+        <a href="/logout" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-gray-100 
+        hover:text-red-800 
             <?php echo $url == '/logout' ? ' bg-white text-red-800' : 'text-white' ?> 
             ">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

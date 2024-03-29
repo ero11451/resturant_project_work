@@ -14,11 +14,15 @@
       <div class="max-w-screen  mx-auto ">
         <div class='flex gap-3 mb-3  overflow-scroll'>
           <?php foreach ($categories as $categorie) : ?>
-            <a class="py-3 px-4 inline-flex flex items-center gap-x-1 text-sm 
-            font-medium rounded-full border border-gray-200 
-            bg-white text-blue-600 shadow-sm hover:bg-gray-50 
-            disabled:opacity-50 disabled:pointer-events-none" href="#">
-              Read more
+            <a class="py-1 px-3 inline-flex flex items-center    
+            <?php echo $selected_category_id == $categorie["category_id"] ? 'bg-red-800 text-white' : '' ?>
+            flex-1 gap-x-1 text-sm 
+            font-medium rounded-full border border-red-200 
+       text-red-600 shadow-sm hover:bg-gray-50 
+            disabled:opacity-50 disabled:pointer-events-none" 
+            href="/home?category=<?php echo $categorie["category_id"] ?>">
+            <p> <?php  echo $categorie  ["categories_name"] ?> </p>
+            
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m9 18 6-6-6-6" />
               </svg>
@@ -34,7 +38,8 @@
 
           <?php foreach ($users as $user) : ?>
 
-            <div class="text-center    rounded">
+            <a class="text-center    rounded"
+            href="/home?user=<?php echo $user["user_id"] ?>">
 
               <?php if ($user['img_url']) : ?>
                 <img class="rounded-full  " src="" alt="Image Description">
@@ -59,36 +64,34 @@
                   <?php echo $user['bio'] ?>
                 </p>
               </div>
-            </div>
+              </a>
 
           <?php endforeach ?>
 
         </div>
 
       </div>
-      <?php
 
-      var_dump($_SESSION["user"]);
-      ?>
       <div class=" text-left my-4">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight ">Top Lessons</h2>
         <p class="mt-1 text-gray-600 ">Best selections</p>
       </div>
 
 
-      <?php loadComponent('lessonsList'); ?>
+      <?php loadComponent('lessonsList',  ['lessons' => $lessons]); ?>
 
-      <div class="mt-12 text-center">
-        <a class="py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 
-    bg-white text-blue-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none 
-   " href="#">
+      <!-- <div class="mt-12 text-center">
+        <a class="p
+        y-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-full 
+        border border-gray-200  bg-white text-blue-600 shadow-sm hover:bg-gray-50 
+        disabled:opacity-50 disabled:pointer-events-none " href="#">
           Read more
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m9 18 6-6-6-6" />
           </svg>
         </a>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </div>

@@ -1,60 +1,79 @@
+<?php
+  loadComponent('header');
+  loadComponent('sidebar');
+?>
+  <div class="w-full px-4 sm:px-6 md:px-8 lg:ps-72">
+
+<div class="max-w-[85rem]  sm:px-6 lg:px-8 l mx-auto">
+
+  <div class="max-w-screen  mx-auto ">
+
 <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
     <div class="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6">
      
       <div class="lg:col-span-2">
         <div class="py-8 lg:pe-8">
           <div class="space-y-5 lg:space-y-8">
-            <a class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+            <a class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline
+            " href="#">
               <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               Back to Blog
             </a>
   
-            <h2 class="text-3xl font-bold lg:text-5xl ">Announcing a free plan for small teams</h2>
+            <h2 class="text-3xl font-bold lg:text-5xl ">
+              <?php  echo $data['title'] ?>
+            </h2>
   
             <div class="flex items-center gap-x-5">
-              <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+              <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full
+               text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200  " >
                 Company News
               </a>
-              <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">January 18, 2023</p>
+              <p class="text-xs sm:text-sm text-gray-800 ">January 18, 2023</p>
             </div>
   
-            <p class="text-lg text-gray-800 ">At preline, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow.</p>
+            <p class="text-lg text-gray-800 ">
+            <?php  echo $data['description'] ?>
+            </p>
   
 
   
             <figure>
-              <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1671726203454-488ab18f7eda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description">
+              <img class="w-full object-cover rounded-xl"
+               src="/public/assests/images/defaultImages.jpg" 
+                alt="Image Description">
               <figcaption class="mt-3 text-sm text-center text-gray-500">
                 A man and a woman looking at a cell phone.
               </figcaption>
             </figure>
   
             <div class="space-y-3">
-              <h3 class="text-2xl font-semibold dark:text-white">Bringing the culture of sharing to everyone</h3>
+              <h3 class="text-2xl font-semibold ">Bringing the culture of sharing to everyone</h3>
   
-              <p class="text-lg text-gray-800 dark:text-gray-200">We know the power of sharing is real, and we want to create an opportunity for everyone to try Preline and explore how transformative open communication can be. Now you can have a team of one or two designers and unlimited spectators (think PMs, management, marketing, etc.) share work and explore the design process earlier.</p>
+              <p class="text-lg text-gray-800 ">We know the power of sharing is real, and we want to create an opportunity for everyone to try Preline and explore how transformative open communication can be. Now you can have a team of one or two designers and unlimited spectators (think PMs, management, marketing, etc.) share work and explore the design process earlier.</p>
             </div>
   
-            <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 dark:text-gray-200">
+            <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 ">
               <li class="ps-2">Preline allows us to collaborate in real time and is a really great way for leadership on the team to stay up-to-date with what everybody is working on," <a class="text-blue-600 decoration-2 hover:underline font-medium" href="#">said</a> Stewart Scott-Curran, Intercom's Director of Brand Design.</li>
               <li class="ps-2">Preline opened a new way of sharing. It's a persistent way for everyone to see and absorb each other's work," said David Scott, Creative Director at <a class="text-blue-600 decoration-2 hover:underline font-medium" href="#">Eventbrite</a>.</li>
             </ul>
   
-            <p class="text-lg text-gray-800 dark:text-gray-200">Small teams and individual designers need a space where they can watch the design process unfold, both for themselves and for the people they work with – no matter if it's a fellow designer, product manager, developer or client. Preline allows you to invite more people into the process, creating a central place for conversation around design. As those teams grow, transparency and collaboration becomes integrated in how they communicate and work together.</p>
+            <p class="text-lg text-gray-800 ">Small teams and individual designers need a space where they can watch the design process unfold, both for themselves and for the people they work with – no matter if it's a fellow designer, product manager, developer or client. Preline allows you to invite more people into the process, creating a central place for conversation around design. As those teams grow, transparency and collaboration becomes integrated in how they communicate and work together.</p>
   
             <div class="grid lg:flex lg:justify-between lg:items-center gap-y-5 lg:gap-y-0">
               <!-- Badges/Tags -->
               <div>
-                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200
+                 " href="#">
                   Plan
                 </a>
-                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 " href="#">
                   Web development
                 </a>
-                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200" href="#">
                   Free
                 </a>
-                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200" href="#">
                   Team
                 </a>
               </div>
@@ -63,7 +82,7 @@
               <div class="flex justify-end items-center gap-x-1.5">
                 <!-- Button -->
                 <div class="hs-tooltip inline-block">
-                  <button type="button" class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <button type="button" class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 ">
                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                     875
                     <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-black" role="tooltip">
@@ -73,11 +92,11 @@
                 </div>
                 <!-- Button -->
   
-                <div class="block h-3 border-e border-gray-300 mx-3 dark:border-gray-600"></div>
+                <div class="block h-3 border-e border-gray-300 mx-3 "></div>
   
                 <!-- Button -->
                 <div class="hs-tooltip inline-block">
-                  <button type="button" class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <button type="button" class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800">
                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                     16
                     <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-black" role="tooltip">
@@ -87,15 +106,17 @@
                 </div>
                 <!-- Button -->
   
-                <div class="block h-3 border-e border-gray-300 mx-3 dark:border-gray-600"></div>
+                <div class="block h-3 border-e border-gray-300 mx-3 "></div>
   
                 <!-- Button -->
                 <div class="hs-dropdown relative inline-flex">
-                  <button type="button" id="blog-article-share-dropdown" class="hs-dropdown-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <button type="button" id="blog-article-share-dropdown" class="hs-dropdown-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800
+">
                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
                     Share
                   </button>
-                  <div class="hs-dropdown-menu w-56 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mb-1 z-10 bg-gray-900 shadow-md rounded-xl p-2 dark:bg-black" aria-labelledby="blog-article-share-dropdown">
+                  <div class="hs-dropdown-menu w-56 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mb-1 z-10 bg-gray-900 shadow-md rounded-xl p-2
+                  " aria-labelledby="blog-article-share-dropdown">
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gray-400" href="#">
                       <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                       Copy link
@@ -130,16 +151,16 @@
       <!-- End Content -->
   
       <!-- Sidebar -->
-      <div class="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-50 lg:via-transparent lg:to-transparent dark:from-slate-800">
+      <div class="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-50 lg:via-transparent lg:to-transparent ">
         <div class="sticky top-0 start-0 py-8 lg:ps-8">
           <!-- Avatar Media -->
-          <div class="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8 dark:border-gray-700">
+          <div class="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8">
             <a class="block flex-shrink-0" href="#">
               <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
             </a>
   
             <a class="group grow block" href="">
-              <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
+              <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 0">
                 Leyla Ludic
               </h5>
               <p class="text-sm text-gray-500">
@@ -149,7 +170,8 @@
   
             <div class="grow">
               <div class="flex justify-end">
-                <button type="button" class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                <button type="button" class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none
+                ">
                   <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
                   Follow
                 </button>
@@ -162,7 +184,7 @@
             <!-- Media -->
             <a class="group flex items-center gap-x-6" href="#">
               <div class="grow">
-                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
+                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 ">
                   5 Reasons to Not start a UX Designer Career in 2022/2023
                 </span>
               </div>
@@ -176,7 +198,7 @@
             <!-- Media -->
             <a class="group flex items-center gap-x-6" href="#">
               <div class="grow">
-                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
+                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 ">
                   If your UX Portfolio has this 20% Well Done, it Will Give You an 80% Result
                 </span>
               </div>
@@ -190,7 +212,7 @@
             <!-- Media -->
             <a class="group flex items-center gap-x-6" href="#">
               <div class="grow">
-                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
+                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 ">
                   7 Principles of Icon Design
                 </span>
               </div>
@@ -206,4 +228,6 @@
       <!-- End Sidebar -->
     </div>
   </div>
-  
+  </div>
+  </div>
+  <div>

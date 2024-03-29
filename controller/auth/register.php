@@ -17,13 +17,12 @@ function registerController()
       v::notEmpty()->validate($_POST["password"]);
 
     if (!$isValid) {
-      loadView('component/notification', ['Invalid user credentials', 'error']);
+      loadView('component/notification', ['message' => 'Invalid user credentials', 'type' => 'error']);
+      loadView('auth/signup');
     } else {
 
-      $username =  $_POST['username'];
-      $email =  $_POST['email'];
-      $user_type =  $_POST['user_type'];
-      $password =  $_POST['password'];
+      $username =  $_POST['username'];  $email =  $_POST['email'];
+      $user_type =  $_POST['user_type']; $password =  $_POST['password'];
 
       $alreadyExit = query(
         'SELECT * FROM users where username= :username and email = :email  ',
@@ -31,11 +30,12 @@ function registerController()
         $conn
       );
 
-      if ($alreadyExit) {
-        loadView('component/notification', ['User credentials already exists']);
+      if ((bool) $alreadyExit) {
+        loadView('component/notification', ['message' => 'Invalid user credentials', 'type' => 'error']);
+        loadView('auth/signup');
       } else {
         $hashPassword =  password_hash($password, PASSWORD_DEFAULT);
-        $users =  query(
+        query(
           'INSERT into users (username, password, email, user_type ) Value (:username, :password, :email, :user_type )',
           [
             'username' => $username, 'email' => $email,
@@ -43,15 +43,20 @@ function registerController()
           ],
           $conn
         );
-        if ($users) {
-          $_SESSION['users'] =  $users;
+
+      $userData = query(
+         'SELECT * FROM users where username= :username   ',
+         ['username' => $username],  $conn  );
+
+        if ($userData) {
+          $_SESSION['user'] =  $userData[0];
           header('Location: home');
         }
       }
     }
 
 
-    loadView('auth/signup',);
+    // loadView('auth/signup');
   } else {
 
     loadView('auth/signup');
