@@ -11,6 +11,10 @@
 
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-4 mx-auto">
 
+    <div class=" text-left my-4">
+        <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Categories</h2>
+      </div>
+
       <div class="max-w-screen  mx-auto ">
         <div class='flex gap-3 mb-3  overflow-scroll'>
           <?php foreach ($categories as $categorie) : ?>
@@ -20,7 +24,7 @@
             font-medium rounded-full border border-red-200 
        text-red-600 shadow-sm hover:bg-gray-50 
             disabled:opacity-50 disabled:pointer-events-none" 
-            href="/lessons?category=<?php echo $categorie["category_id"] ?>">
+            href="/recipes?category=<?php echo $categorie["category_id"] ?>">
             <p> <?php  echo $categorie  ["categories_name"] ?> </p>
             
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -34,13 +38,34 @@
 
       </div>
 
+
       <div class=" text-left my-4">
-        <h2 class="text-2xl font-bold md:text-4xl md:leading-tight ">Lessons</h2>
-        <p class="mt-1 text-gray-600 ">Best selections</p>
+        <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Locations</h2>
       </div>
 
 
-      <?php loadComponent('lessonsList',  ['lessons' => $lessons]); ?>
+      <?php foreach ($locations as $location) : ?>
+            <a class="py-1 px-3 inline-flex flex items-center    
+            <?php echo $selected_location_id == $location["location_id"] ? 'bg-red-800 text-white' : '' ?>
+            flex-1 gap-x-1 text-sm 
+            font-medium rounded-full border border-red-200   text-red-600 shadow-sm hover:bg-gray-50 
+            disabled:opacity-50 disabled:pointer-events-none" 
+            href="/recipes?location=<?php echo $location["location_id"] ?>">
+            <p> <?php  echo $location["location_name"] ?> </p>
+            
+              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            
+          <?php endforeach ?>
+
+      <div class=" text-left my-4">
+        <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Recipes</h2>
+        <!-- <p class="mt-1 text-gray-600 ">Best selections</p> -->
+      </div>
+
+      <?php loadComponent('recipeList',  ['recipes' => $recipes]); ?>
 
       <!-- <div class="mt-12 text-center">
         <a class="p

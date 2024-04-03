@@ -1,4 +1,5 @@
 <?php
+include('fileUploadHander.php');
 
 function test_input($data)
 {
@@ -7,6 +8,7 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
+
 
 function basePath($path)
 {
@@ -60,4 +62,12 @@ function print_data($data)
   var_dump($data);
   echo '</pre>';
 }
+
+function format_date($data_string, $format = 'Y-m-d'){
+
+    $timestamp = strtotime($data_string);
+
+    return date($format, $timestamp);
+}
+
 

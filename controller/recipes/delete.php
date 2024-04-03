@@ -1,14 +1,14 @@
 <?php 
 
 
-function lessonsDelete($id)
+function recipesDelete($id)
 {
     require(basePath('db/connection.php'));
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     $dbRes =   query(
-        "DELETE FROM lessons WHERE lessons_id = :lessons_id ",
-        ['lessons_id' => $id],
+        "DELETE FROM recipes WHERE recipe_id = :recipes_id ",
+        ['recipes_id' => $id],
         $conn
     );
 

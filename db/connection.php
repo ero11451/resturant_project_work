@@ -9,13 +9,11 @@ $conn;
 try {
   $conn = new PDO("mysql:host=$servername", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "CREATE DATABASE  IF NOT EXISTS  lessons";
+  $sql = "CREATE DATABASE  IF NOT EXISTS  benin";
   $conn->exec($sql);
 
-  $conn->exec("USE lessons");
-
-
-  // echo "Database created successfully<br>";
+  $conn->exec("USE benin");
+  
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
 }

@@ -51,6 +51,7 @@
                  focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
                  <option value="chef">Chef</option>
                  <option value="user">User</option>
+                 <option value="admin">Admin</option>
 
                 </select>
            
@@ -71,8 +72,9 @@
 
 
 
+ 
   <div
-  style="background-image: url('https://img.freepik.com/free-photo/woman-chef-cooking-vegetables-pan_1303-22282.jpg?w=1800&t=st=1711334080~exp=1711334680~hmac=2f236c51c111526d6f709d7dc3cc2afc900e2f4ef9a20b798b4ac62da2421609');"
+  style="background-image: url('/public/assests/images/woman-chef-cooking.jpg');"
   class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full 
       bg-[url('/public/assests/images/woman-chef-cooking-vegetables-pan.jpg')] bg-no-repeat bg-center bg-cover"></div>
 

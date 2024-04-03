@@ -20,15 +20,21 @@ function loginController()
     if ($isValid){
       $user = query( 'SELECT * FROM users where username= :username', ['username' => $username], $conn );
 
-      $checkPassword = (bool) password_verify($password, $user[0]['password']);
-
-      if (!$checkPassword &&  !$user ){ 
-        loadView('component/notification', [ 'message' => 'Invalid user credentials',  'type' => 'error' ]);
-        }
-      else{
-          $_SESSION["user"] = $user[0];
-          header('Location: home');
-        }
+      if ($user ) {
+        $checkPassword = (bool) password_verify($password, $user[0]['password']);
+  
+        if (!$checkPassword &&  !$user ){ 
+          loadView('component/notification', [ 'message' => 'Invalid user credentials',  'type' => 'error' ]);
+          }
+        else{
+            $_SESSION["user"] = $user[0];
+            header('Location: home');
+          }
+      }else{
+        loadView('component/notification', 
+        ['message' => 'Invalid user credentials',  
+        'type' => 'error' ]);
+      }
   }else{
          loadView('component/notification', ['message' => 'Invalid user credentials',  'type' => 'error' ]);
   }

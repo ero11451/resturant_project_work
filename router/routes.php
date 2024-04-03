@@ -37,29 +37,43 @@ $router->get('/', function( ){
 $router->get('/home', function( ){
     homeIndex();
 });
+
 $router->get('/home/(\w+)', function($id){
-   
-    lessonsDetails($id);
+    recipesDetails($id);
 });
+
+
+
+$router->get('/recipes/(\w+)', function($id){
+    recipesDetails($id);
+});
+
 $router->get('/logout', function( ){
     session_destroy();
     header("Location: login");
 });
 
 
-$router->get('/lessons/delete/(\w+)', function($id) {
-  $lessons_id = htmlentities($id);
-  lessonsDelete($lessons_id);
+$router->get('/recipes/delete/(\w+)', function($id) {
+  $recipes_id = htmlentities($id);
+  recipesDelete($recipes_id);
 });
 
-$router->match('GET|POST', '/lessons', function() {
-    lessonsIndex();
+$router->match('GET|POST', '/recipes', function() {
+    recipesIndex();
 });
 
-$router->match('GET|POST', '/lessons/create', function() {
-  createLessons();
+$router->match('GET|POST', '/recipes/mode/(\w+)', function($mode) {
+    $mode = htmlentities($mode);
+    if ($mode == 'create') {
+        createrecipes();
+    }
+    if ($mode =='update') {
+        updaterecipes();
+    }
  });
- 
+
+
 $router->get('/about', function() {
     echo 'About Page';
 });
@@ -71,16 +85,16 @@ $router->set404(function() {
 // $router->post('/register', function( ){
 //     registerController();
 // });
-// $router->get('/lessons/{id}', function() {
-//   lessonsIndex();
+// $router->get('/recipes/{id}', function() {
+//   recipesIndex();
 // });
 
-// $router->get('/lessons/create', function() {
-//     createLessons();
+// $router->get('/recipes/create', function() {
+//     createrecipes();
 // });
 
-// $router->post('/lessons/create', function() {
-//     createLessons();
+// $router->post('/recipes/create', function() {
+//     createrecipes();
 // });
 // $router->post('/login', function( ){
 //     loginController();

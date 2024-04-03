@@ -1,9 +1,13 @@
-<?php
+<?php 
 
 
+include (basePath('controller/recipes/create.php'));
 
+include (basePath('controller/recipes/delete.php'));
 
-function homeIndex()
+include (basePath('controller/recipes/edit.php'));
+
+function recipesIndex()
 {
     require(basePath('db/connection.php'));
 
@@ -34,16 +38,32 @@ function homeIndex()
     }
 
 
- 
 
-   
-    loadView('home', [
-        'users' => $users, 
-        'categories' => $categories, 
-        'recipes' => $recipes, 
-        'locations' => $locations, 
-        'selected_location_id' =>  $selected_location_id , 
-        'selected_category_id' => $selected_category_id,
-        'user_id' =>  $user_id
+    loadView('recipes/list',[
+     'users' => $users,
+     'selected_category_id' => $selected_category_id,
+     'selected_location_id' => $selected_location_id,
+     'locations' => $locations, 
+     'categories' => $categories, 
+     'recipes' => $recipes, 
     ]);
+}
+
+function recipesDetails($id)
+{
+    require(basePath('db/connection.php'));
+    $selected_id = htmlentities($id);
+    $dbRes = query('SELECT * FROM recipes 
+     INNER JOIN categories ON categories.category_id = recipes.category_id
+     INNER JOIN users ON users.user_id = recipes.teacher_id
+     where recipe_id = :recipe_id 
+    ', ['recipe_id' => $selected_id], $conn);
+
+    $user_data_id = $dbRes[0]['teacher_id'];
+
+    $user_recipes=  query(
+        'SELECT * FROM recipes where teacher_id = :teacher_id ',
+        ['teacher_id' => $user_data_id], $conn);
+
+    loadView('recipes/details',['data' =>   $dbRes[0],  'user_recipes' => $user_recipes]);
 }

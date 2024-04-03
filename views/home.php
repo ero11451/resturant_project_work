@@ -11,15 +11,16 @@
 
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-4 mx-auto">
 
+    <div class=" text-left my-4">
+        <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Categories <?php echo count($categories ); ?></h2></h2>
+      </div>
       <div class="max-w-screen  mx-auto ">
         <div class='flex gap-3 mb-3  overflow-scroll'>
           <?php foreach ($categories as $categorie) : ?>
             <a class="py-1 px-3 inline-flex flex items-center    
             <?php echo $selected_category_id == $categorie["category_id"] ? 'bg-red-800 text-white' : '' ?>
-            flex-1 gap-x-1 text-sm 
-            font-medium rounded-full border border-red-200 
-       text-red-600 shadow-sm hover:bg-gray-50 
-            disabled:opacity-50 disabled:pointer-events-none" 
+            flex-1 gap-x-1 text-sm  font-medium rounded-full border border-red-200  text-red-600 shadow-sm 
+            hover:bg-gray-50  disabled:opacity-50 disabled:pointer-events-none" 
             href="/home?category=<?php echo $categorie["category_id"] ?>">
             <p> <?php  echo $categorie  ["categories_name"] ?> </p>
             
@@ -27,25 +28,26 @@
                 <path d="m9 18 6-6-6-6" />
               </svg>
             </a>
-
           <?php endforeach ?>
         </div>
         <div class=" text-left ">
-          <h2 class="text-2xl font-bold md:text-4xl md:leading-tight ">Our chef</h2>
-          <p class="mt-1 text-gray-600 ">Creative people</p>
+          <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Our chef <?php echo count($users ); ?></h2>
+          <!-- <p class="mt-1 text-gray-600 ">Creative people</p> -->
         </div>
         <div class=" flex flex-nowrap  overflow-scroll gap-8 my-3 ">
 
           <?php foreach ($users as $user) : ?>
 
-            <a class="text-center    rounded"
-            href="/home?user=<?php echo $user["user_id"] ?>">
+            <a class="text-center rounded  
+            
+            <?php echo $user_id == $user["user_id"] ? 'bg-red-800 p-3 text-white' : '' ?>"
+                  href="/home?user=<?php echo $user["user_id"] ?>">
 
-              <?php if ($user['img_url']) : ?>
+              <?php if ($user['user_img_url']) : ?>
                 <img class="rounded-full  " src="" alt="Image Description">
               <?php endif ?>
 
-              <?php if (!$user['img_url']) : ?>
+              <?php if (!$user['user_img_url']) : ?>
                 <span class="inline-block size-16 bg-gray-100 rounded-full overflow-hidden">
                   <svg class="size-full text-gray-300" width="46" height="46" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.62854" y="0.359985" width="15" height="15" rx="7.5" fill="white" />
@@ -57,10 +59,10 @@
 
 
               <div class="mt-2 sm:mt-4">
-                <p class=" text-gray-800  text-xs	">
+                <p class="  text-xs	truncate ...">
                   <?php echo $user['username'] ?>
                 </p>
-                <p class="text-sm text-gray-600 ">
+                <p class="text-sm   truncate ...">
                   <?php echo $user['bio'] ?>
                 </p>
               </div>
@@ -70,15 +72,36 @@
 
         </div>
 
+
+        <div class=" text-left my-4">
+        <h2 class="text-1xl font-bold md:text-1xl md:leading-tight ">Locations</h2>
+      </div>
+
+        <?php foreach ($locations as $location) : ?>
+            <a class="py-1 px-3 inline-flex flex items-center    
+            <?php echo $selected_location_id == $location["location_id"] ? 'bg-red-800 text-white' : '' ?>
+            flex-1 gap-x-1 text-sm 
+            font-medium rounded-full border border-red-200   text-red-600 shadow-sm hover:bg-gray-50 
+            disabled:opacity-50 disabled:pointer-events-none" 
+            href="/home?location=<?php echo $location["location_id"] ?>">
+            <p> <?php  echo $location["location_name"] ?> </p>
+            
+              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            
+
+          <?php endforeach ?>
       </div>
 
       <div class=" text-left my-4">
-        <h2 class="text-2xl font-bold md:text-4xl md:leading-tight ">Top Lessons</h2>
-        <p class="mt-1 text-gray-600 ">Best selections</p>
+        <h2 class="text-2xl font-bold md:text-1xl md:leading-tight ">Recipes</h2>
+        <!-- <p class="mt-1 text-gray-600 ">Best selections</p> -->
       </div>
 
 
-      <?php loadComponent('lessonsList',  ['lessons' => $lessons]); ?>
+      <?php loadComponent('recipeList',  ['recipes' => $recipes]); ?>
 
       <!-- <div class="mt-12 text-center">
         <a class="p

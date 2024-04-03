@@ -5,15 +5,15 @@ require(basePath('db/connection.php'));
 
 
  
-function getLessons(  ){
+function getrecipes(  ){
 
 try {
-    $sql = 'SELECT  * FROM lessons  ';
+    $sql = 'SELECT  * FROM recipes  ';
     $stmt = $DB->prepare($sql);
     $stmt->execute();
     $resultDB = $stmt->fetchAll();
 
-    $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM lessons");
+    $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM recipes");
     $total_stmt->execute();
     $total_results = $total_stmt->fetch(PDO::FETCH_ASSOC)['total'];
 
@@ -31,19 +31,19 @@ try {
    
 }
 
-function getLessonsByTeacher(int $limit, $teacher_id,  $DBconn){
+function getrecipesByTeacher(int $limit, $teacher_id,  $DBconn){
  
     try {
-        $sql = 'SELECT  * FROM lessons 
-         INNER JOIN users  ON lessons.teacher_id = users.user_id
-         LEFT JOIN categories  on lessons.category_id = categories.category_id
+        $sql = 'SELECT  * FROM recipes 
+         INNER JOIN users  ON recipes.teacher_id = users.user_id
+         LEFT JOIN categories  on recipes.category_id = categories.category_id
          where teacher_id = :teacher_id
          ';
         $stmt = $DBconn->prepare($sql);
         $stmt->execute([':teacher_id' =>  $teacher_id]);
         $resultDB = $stmt->fetchAll();
     
-        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM lessons");
+        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM recipes");
         $total_stmt->execute();
         
         $total_results = $total_stmt->fetch(PDO::FETCH_ASSOC)['total'];
@@ -62,17 +62,17 @@ function getLessonsByTeacher(int $limit, $teacher_id,  $DBconn){
     }
 }
 
-function getLessonsById(int $limit, $lessons_id,  $DBconn){
+function getrecipesById(int $limit, $recipes_id,  $DBconn){
    
     try {
-        $sql = 'SELECT  * FROM lessons 
-        INNER JOIN users  ON lessons.teacher_id = users.user_id
-        where lessons_id = :lessons_id';
+        $sql = 'SELECT  * FROM recipes 
+        INNER JOIN users  ON recipes.teacher_id = users.user_id
+        where recipes_id = :recipes_id';
         $stmt = $DBconn->prepare($sql);
-        $stmt->execute([':lessons_id' =>  $lessons_id]);
+        $stmt->execute([':recipes_id' =>  $recipes_id]);
         $resultDB = $stmt->fetchAll();
     
-        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM lessons");
+        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM recipes");
         $total_stmt->execute();
         $total_results = $total_stmt->fetch(PDO::FETCH_ASSOC)['total'];
         $total_pages = ceil($total_results / $limit);
@@ -90,18 +90,18 @@ function getLessonsById(int $limit, $lessons_id,  $DBconn){
     }
 }
 
-function getLessonsByCategory(int $limit, $category_id,  $DBconn){
+function getrecipesByCategory(int $limit, $category_id,  $DBconn){
 
   
     try {
         $sql = 'SELECT  * FROM categories 
-        INNER JOIN lessons  ON categories.lessons_id = lessons.lessons_id
+        INNER JOIN recipes  ON categories.recipes_id = recipes.recipes_id
         where category_id = :category_id';
         $stmt = $DBconn->prepare($sql);
         $stmt->execute([':category_id' =>  $category_id]);
         $resultDB = $stmt->fetchAll();
     
-        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM lessons");
+        $total_stmt = $DBconn->prepare("SELECT COUNT(*) as total FROM recipes");
         $total_stmt->execute();
         $total_results = $total_stmt->fetch(PDO::FETCH_ASSOC)['total'];
         $total_pages = ceil($total_results / $limit);
@@ -120,11 +120,11 @@ function getLessonsByCategory(int $limit, $category_id,  $DBconn){
 }
 
 
-function createLessons( $requestBody, $DBconn){
+function createrecipes( $requestBody, $DBconn){
 
  
     try {
-        $sql = 'INSERT into lessons (title, description, category_id, teacher_id , img_url, paid, video_url) 
+        $sql = 'INSERT into recipes (title, description, category_id, teacher_id , img_url, paid, video_url) 
         Value (:title, :description, :category_id, :teacher_id , :img_url, :paid, :video_url)';
         $stmt = $DBconn->prepare($sql);
         $stmt->execute($requestBody);
@@ -141,12 +141,12 @@ function createLessons( $requestBody, $DBconn){
     }
 }
 
-function deletLessons( $lessons_id, $DBconn){
+function deletrecipes( $recipes_id, $DBconn){
 
     try {
-        $sql =  "DELETE FROM lessons WHERE lessons_id = :lessons_id";
+        $sql =  "DELETE FROM recipes WHERE recipes_id = :recipes_id";
         $stmt = $DBconn->prepare($sql);
-        $stmt->execute($lessons_id);
+        $stmt->execute($recipes_id);
         $resultDB = $stmt->fetchAll();
     
         $result['data']  =  $resultDB;
@@ -160,19 +160,19 @@ function deletLessons( $lessons_id, $DBconn){
     }
 }
 
-function editLessons( $requestBody, $DBconn){
+function editrecipes( $requestBody, $DBconn){
 
     $result = null;
 
     try {
-        $sql = 'UPDATE  lessons SET 
+        $sql = 'UPDATE  recipes SET 
         title = :title, 
         description = :description, 
         category_id = :category,  
         img_url = :img_url,
         paid = :paid, 
         video_url  = :video_url
-         WHERE lessons_id = :lessons_id';;
+         WHERE recipes_id = :recipes_id';;
         $stmt = $DBconn->prepare($sql);
         $stmt->execute($requestBody);
         $resultDB = $stmt->fetchAll();
