@@ -44,11 +44,11 @@
           <div class="flex-shrink-0 group block">
             <div class="flex items-center">
 
-              <?php if (($_SESSION)['user']['user_img_url']) : ?>
-                <img class="inline-block flex-shrink-0 size-[52px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description" />
+              <?php // if (($_SESSION)['user']['user_img_url']) : ?>
+                <!-- <img class="inline-block flex-shrink-0 size-[52px] rounded-full" src="" alt="Image Description" /> -->
 
-              <?php endif ?>
-              <?php if (!($_SESSION)['user']['user_img_url']) : ?>
+              <?php // endif ?>
+              <?php // if (!($_SESSION)['user']['user_img_url']) : ?>
                 <span class="inline-block size-[52px] bg-gray-100 rounded-full overflow-hidden">
                   <svg class="size-full text-gray-300" width="46" height="46" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.62854" y="0.359985" width="15" height="15" rx="7.5" fill="white" />
@@ -56,7 +56,7 @@
                     <path d="M11.818 10.5975C10.2992 12.6412 7.42106 13.0631 5.37731 11.5537C5.01171 11.2818 4.69296 10.9631 4.42107 10.5975C4.28982 10.4006 4.27107 10.1475 4.37419 9.94123L4.51482 9.65059C4.84296 8.95684 5.53671 8.51624 6.30546 8.51624H9.95231C10.7023 8.51624 11.3867 8.94749 11.7242 9.62249L11.8742 9.93184C11.968 10.1475 11.9586 10.4006 11.818 10.5975Z" fill="currentColor" />
                   </svg>
                 </span>
-              <?php endif ?>
+              <?php // endif ?>
               <div class="ms-3">
                 <h3 class="font-semibold text-gray-800 dark:text-white">
                   HI

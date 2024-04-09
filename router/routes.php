@@ -23,6 +23,7 @@ $router->before('GET|POST', '/', function() {
       exit();
   }
 });
+
 $router->before('GET|POST', '/home', function() {
     if (!isset($_SESSION['user'])) {
         header('location: /login');
@@ -31,11 +32,16 @@ $router->before('GET|POST', '/home', function() {
   });
 
 $router->get('/', function( ){
-    homeIndex();
+    loadView('index');
 });
 
 $router->get('/home', function( ){
     homeIndex();
+});
+
+$router->get('/user/delete/(\w+)', function($id ){
+    $id = htmlentities($id);
+    usersDelete($id);
 });
 
 $router->get('/home/(\w+)', function($id){
@@ -53,6 +59,15 @@ $router->get('/logout', function( ){
     header("Location: login");
 });
 
+
+
+$router->get('/about', function( ){
+   loadView('about');
+});
+
+$router->get('/contact_us', function( ){
+    loadView('contact_us');
+ });
 
 $router->get('/recipes/delete/(\w+)', function($id) {
   $recipes_id = htmlentities($id);
@@ -74,9 +89,9 @@ $router->match('GET|POST', '/recipes/mode/(\w+)', function($mode) {
  });
 
 
-$router->get('/about', function() {
-    echo 'About Page';
-});
+// $router->get('/about', function() {
+//     echo 'About Page';
+// });
 
 $router->set404(function() {
     echo ' Page not found';

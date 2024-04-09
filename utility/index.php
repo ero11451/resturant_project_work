@@ -1,23 +1,22 @@
 <?php
-include('fileUploadHander.php');
+include 'fileUploadHander.php';
 
 function test_input($data)
 {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
-
 
 function basePath($path)
 {
-  return  dirname(__DIR__) . '/' . $path;
+    return dirname(__DIR__) . '/' . $path;
 }
 
 function loadView($name, $data = [])
 {
-  echo '
+    echo '
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -26,19 +25,23 @@ function loadView($name, $data = [])
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
     </head>
     <body >
 ';
-  $viewPath =  basePath("views/{$name}.php");
+    $viewPath = basePath("views/{$name}.php");
 
-  if (file_exists($viewPath)) {
-    extract($data);
-    require  $viewPath;
-  } else {
-    require basePath("views/error.php");
-  }
+    if (file_exists($viewPath)) {
+        extract($data);
+        require $viewPath;
+    } else {
+        require basePath("views/error.php");
+    }
 
-  echo '
+    echo '
     </body>
     </html>';
 }
@@ -46,28 +49,38 @@ function loadView($name, $data = [])
 function loadComponent($name, $data = [])
 {
 
-  $viewPath =  basePath("views/component/{$name}.php");
+    $viewPath = basePath("views/component/{$name}.php");
 
-  if (file_exists($viewPath)) {
-    extract($data);
-    require $viewPath;
-  } else {
-    echo 'Component' . $name . ' does not exist';
-  }
+    if (file_exists($viewPath)) {
+        extract($data);
+        require $viewPath;
+    } else {
+        echo 'Component' . $name . ' does not exist';
+    }
 }
 
 function print_data($data)
 {
-  echo '<pre>';
-  var_dump($data);
-  echo '</pre>';
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
 }
 
-function format_date($data_string, $format = 'Y-m-d'){
+function format_date($data_string, $format = 'Y-m-d')
+{
 
     $timestamp = strtotime($data_string);
 
     return date($format, $timestamp);
 }
 
+function limitString($string, $maxCount)
+{
 
+    if (strlen($string) > $maxCount) {
+        $shortenedString = substr($string, 0, $maxCount) . "...";
+    } else {
+        $shortenedString = $string;
+    }
+    return $shortenedString;
+}

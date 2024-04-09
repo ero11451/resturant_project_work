@@ -5,7 +5,7 @@
     <div class="md:pe-8 md:w-1/2 xl:pe-0 xl:w-5/12">
 
       <h1 class="text-3xl text-gray-800 font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
-        Welcome back  <br> <span class="text-blue-600 dark:text-red-500">The plug</span>
+        Welcome back  to <br> <span class="text-blue-600 dark:text-red-500">Benin foodie</span>
       </h1>
       <p class="mt-3 text-base text-gray-500 mb-8">
         Built on standard web technology, teams use Preline to build beautiful cross-platform hybrid apps in a fraction of the time.
@@ -15,12 +15,12 @@
  
 
 
-      <form method="POST" action="/login">
+      <form method="POST" action="/login" class="animate__animated animate__fadeInDown">
         <div class="mb-4">
           <label for="hs-hero-name-2" class="block text-sm font-medium dark:text-white"><span class="sr-only">User name</span></label>
-          <input type="text" id="hs-hero-name-2" name="username" class="py-3 px-4 block w-full border-gray-200
+          <input type="text" id="hs-hero-name-2" name="username" class="py-3 bg-gray-100 px-4 block w-full border-gray-200
            rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none 
-          border" placeholder="Full name">
+       animate__fadeInLeft   border" placeholder="Full name">
         </div>
 
         <div class="mb-4">
@@ -28,7 +28,7 @@
 
         <div class="mb-4">
           <label for="hs-hero-password-2" class="block text-sm font-medium dark:text-white"><span class="sr-only">Password</span></label>
-          <input type="password" name="password" id="hs-hero-password-2" class="py-3 px-4 border block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Password">
+          <input type="password" name="password" id="hs-hero-password-2" class="py-3 bg-gray-100 px-4 border block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Password">
         </div>
 
         <div class="grid">

@@ -25,7 +25,7 @@ function registerController()
       $user_type =  $_POST['user_type']; $password =  $_POST['password'];
 
       $alreadyExit = query(
-        'SELECT * FROM users where username= :username and email = :email  ',
+        'SELECT * FROM users where username= :username and email = :email',
         ['username' => $username, 'email' => $email],
         $conn
       );
@@ -36,7 +36,8 @@ function registerController()
       } else {
         $hashPassword =  password_hash($password, PASSWORD_DEFAULT);
         query(
-          'INSERT into users (username, password, email, user_type ) Value (:username, :password, :email, :user_type )',
+          'INSERT into users (username, password, email, user_type ) 
+           Value (:username, :password, :email, :user_type )',
           [
             'username' => $username, 'email' => $email,
             'user_type' => $user_type,  'password' => $hashPassword
@@ -45,12 +46,18 @@ function registerController()
         );
 
       $userData = query(
-         'SELECT * FROM users where username= :username   ',
+         'SELECT * FROM users where username= :username',
          ['username' => $username],  $conn  );
 
         if ($userData) {
           $_SESSION['user'] =  $userData[0];
-          header('Location: home');
+          $userAuth = $user[0];
+          if( $userAuth['user_type'] == 'user'){
+            header('Location: recipes');
+          }
+          else{
+            header('Location: home');
+          }
         }
       }
     }
