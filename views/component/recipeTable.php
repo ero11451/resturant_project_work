@@ -6,6 +6,8 @@
             <th scope="col" class="border p-3 text-left">Image</th>
             <th scope="col" class="border p-3 text-left">Title</th>
             <th scope="col" class="border p-3 text-left">Description</th>
+            <th scope="col" class="border p-3 text-left">location</th>
+            <th scope="col" class="border p-3 text-left">categories</th>
             <th scope="col" class="border p-3 text-left">Action</th>
         </tr>
     </thead>
@@ -17,11 +19,18 @@
                     <img class="w-14 h-14 object-cover rounded-lg" src="<?php
                     $img_url = explode('/', $value['img_url']);
                     echo !$value['img_url'] ? 'public/assests/images/defaultImages.jpg' :
-                        './../uploads/' . $img_url[6]; ?>" alt="Image Description">
+                    './../uploads/' . end($img_url); ?>" alt="Image Description">
+                    <?php  ?>
                 </td>
                 <td class="border p-3  ...">
-                    <?php echo limitString($value['title'], 30 )?></td>
-                <td class="border p-3 "><?php echo limitString($value['description'] , 20)?></td>
+                    <a  class='text-blue-800'
+                      href="<?php echo  '/recipes'. '/' . $value['recipe_id'] ?>">
+                      <?php echo limitString($value['title'], 30 )?>
+                   </a>
+                </td>
+                <td class="border p-3 "><?php echo limitString($value['description'] ?? '', 20) ?? '' ?></td>
+                <td class="border p-3 "><?php echo limitString($value['location_name'] ?? '' , 20) ?? ''?></td>
+                <td class="border p-3 "><?php echo limitString($value['categories_name'] ?? '' , 20) ?></td>
                
                 <td class="border p-3">
                     <div class="flex gap-2">

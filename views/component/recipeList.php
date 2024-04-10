@@ -9,11 +9,11 @@
             <a href="<?php echo  $_SERVER['REQUEST_URI'] . '/' . $value['recipe_id'] ?>">
                 <div class="aspect-w-16 aspect-h-11">
 
-                    <img class="w-full object-cover rounded-xl" 
+                    <img class="w-full object-cover rounded-xl h-[250px]" 
                     src="<?php $img_url =  explode('/', $value['img_url']);
                                                                         echo !$value['img_url'] ? 'public/assests/images/defaultImages.jpg' :
-                                                                            './../uploads/' . $img_url[6]; ?>" alt="Image Description">
-                </div>
+                                                                            './../uploads/' . end($img_url); ?>" alt="Image Description">
+                </div> 
                 <div class="my-6">
                     <h3 class="text-xl font-semibold text-gray-800 ">
                         <?php echo $value['title'] ?>
@@ -26,7 +26,10 @@
                 
                 <div class="mt-auto flex items-center gap-x-3">
                     <div>
-                        <h5 class="text-sm text-gray-800 mb-4 "><?php echo $value['username'] ?? ''  ?></h5>
+                        <h5 class="text-sm text-gray-800 mb-4 ">
+                            Created by
+                          <?php echo $value['username'] ?? ''  ?>
+                       </h5>
                     </div>
                 </div>
                 <div class="flex gap-2">
@@ -35,7 +38,7 @@
 
             <?php if (($value['teacher_id'] ==  $_SESSION['user']['user_id']) || ('admin' ==  $_SESSION['user']['user_type'])) : ?>
 
-                <a href="/recipes/delete/<?php echo $value['recipe_id']  ?>"
+                <!-- <a href="/recipes/delete/<?php echo $value['recipe_id']  ?>"
                  class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2
              text-sm font-semibold rounded-lg border border-transparent bg-red-600 
              text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none 
@@ -50,7 +53,7 @@
                   text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none 
                 ">
                     Edit
-                </a>
+                </a> -->
 
             <?php endif ?>
 

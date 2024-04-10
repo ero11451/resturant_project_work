@@ -125,7 +125,7 @@
                 <img class="w-full h-full absolute top-0 start-0 object-cover rounded-lg" 
                 src="<?php $img_url =  explode('/', $user_lesson['img_url']);
                                      echo !$user_lesson['img_url'] ? 'public/assests/images/defaultImages.jpg' :
-                                    './../uploads/' . $img_url[6]; ?>"  alt="Image Description">
+                                      basePath('uploads'. end($img_url)) ?>"  alt="Image Description">
               </div>
             </a>
          <?php endforeach ?>

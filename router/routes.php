@@ -8,7 +8,6 @@ $router = new Router();
 include(basePath('router/middleware.php'));
 
 
-
 $router->match('GET|POST', '/login', function( ){
     loginController();
 });
@@ -30,10 +29,19 @@ $router->before('GET|POST', '/home', function() {
         exit();
     }
   });
+$router->get('/index', function( ){
+    if (isset($_SESSION['user'])) {
+        header('location: /home');
+        exit();
+    }
+    loadView('index');
+});
 
 $router->get('/', function( ){
     loadView('index');
 });
+
+
 
 $router->get('/home', function( ){
     homeIndex();

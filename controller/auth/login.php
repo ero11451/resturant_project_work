@@ -8,6 +8,8 @@ function loginController()
 {
 
   require(basePath('db/connection.php'));
+
+  initalValueSetup($conn);
   $username = $password = "";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -6,7 +6,7 @@
         Welcome to <br> <span class="text-blue-600 dark:text-red-500">Benin foodie</span>
       </h1>
       <p class="mt-3 text-base text-gray-500 mb-8">
-        Built on standard web technology, teams use Preline to build beautiful cross-platform hybrid apps in a fraction of the time.
+      Become the next top chef in the world by learing from the best.
       </p>
 
 

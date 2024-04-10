@@ -41,7 +41,7 @@
         <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
 
 
-          <div class="flex-shrink-0 group block">
+          <div class="flex-shrink-0 group block flex justify-between">
             <div class="flex items-center">
 
               <?php // if (($_SESSION)['user']['user_img_url']) : ?>
@@ -64,10 +64,13 @@
                 </h3>
                 <p class="text-sm font-medium text-gray-400">
 
-                  <?php echo $_SESSION['user']['email']  ?>
-                </p>
+                  <?php echo $_SESSION['user']['email']  ?> is a
+                  <span class='bg-red-800 text-white'>
+                  <?php echo $_SESSION['user']['user_type']  ?></p>
+                </span>
               </div>
             </div>
+           
           </div>
 
         </div>

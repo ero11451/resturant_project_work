@@ -29,7 +29,12 @@ function updaterecipes()
         $location_id = test_input($_POST["location_id"]);
         $video_url = test_input($_POST['video_url']);
         $status = test_input($_POST['status']);
-        $img_url = $_FILES ? handelFileUpload($_FILES) : $_POST['img_url'];
+        $img_url_selected  = $selectedData[0]['img_url'];
+        if ( $img_url_selected == NULL) {
+            $img_url =  handelFileUpload($_FILES);
+        }else{
+            $img_url = $img_url_selected;
+        }
         
         $isValid = v::notEmpty()->validate($title) &&  v::notEmpty()->validate($description) &&  v::notEmpty()->validate($category_id);
       
