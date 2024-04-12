@@ -41,7 +41,13 @@ $router->get('/', function( ){
     loadView('index');
 });
 
+$router->get('/loadDetailData', function( ){
+    require(basePath('db/connection.php'));
+    initalTableSetup($conn);
+    initalValueSetup($conn);
 
+    header('location: /home');
+});
 
 $router->get('/home', function( ){
     homeIndex();

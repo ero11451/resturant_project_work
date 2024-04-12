@@ -15,7 +15,6 @@ try {
 
   $conn->exec("USE benin");
 
-  initalTableSetup($conn);
 
   
 } catch(PDOException $e) {
@@ -28,13 +27,15 @@ try {
 
  function query($sql , $params , $conn){
   try{
-     $stmt =  $conn->prepare($sql);
+   
+    $stmt =  $conn->prepare($sql);
   
      $stmt->execute($params);
     
-    return $stmt ->fetchAll(PDO::FETCH_ASSOC);
+     return $stmt ->fetchAll(PDO::FETCH_ASSOC);
 
-  }catch(PDOException $e) {
+  }
+  catch(PDOException $e) {
     echo '<pre>' . "<br>" . $e->getMessage() . '</pre>';
   }
 }
@@ -66,3 +67,8 @@ function initalValueSetup($conn){
 
 
  
+
+
+?>
+
+
