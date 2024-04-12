@@ -103,13 +103,15 @@ $router->match('GET|POST', '/recipes/mode/(\w+)', function($mode) {
  });
 
 
+$router->set404(function() {
+    loadView('error');
+    // echo ' Page not found';
+});
+
 // $router->get('/about', function() {
 //     echo 'About Page';
 // });
 
-$router->set404(function() {
-    echo ' Page not found';
-});
 
 // $router->post('/register', function( ){
 //     registerController();
